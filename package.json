@@ -1,0 +1,29 @@
+{
+  "name": "portfolio",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 5050",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1 --port 5050",
+    "og-image": "node scripts/generate-og-image.js",
+    "seo:audit": "node scripts/seo-audit.js",
+    "seo:lighthouse": "npm run build && echo 'Visit https://YOUR_DEPLOYED_URL or use: lighthouse https://yugpatel.dev'",
+    "seo:check": "npm run og-image && npm run seo:audit"
+  },
+  "dependencies": {
+    "framer-motion": "^11.11.9",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-icons": "^5.6.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.0.2",
+    "autoprefixer": "^10.5.0",
+    "postcss": "^8.5.15",
+    "sharp": "^0.34.5",
+    "tailwindcss": "^3.4.19",
+    "vite": "^7.1.5"
+  }
+}
