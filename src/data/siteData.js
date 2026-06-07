@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: 'Yug Patel',
   initials: 'YP',
-  profession: 'Full Stack Developer & UI Designer',
+  profession: 'Full Stack Developer',
   roleLine: 'Building scalable web applications with clean code, intuitive interfaces, and a focus on performance and user experience.',
   intro: 'I build modern web applications with clear interfaces, fast data flow, and scalable backends. My work focuses on balancing polished user experiences with robust, maintainable architecture.',
   location: 'Gujarat, India',

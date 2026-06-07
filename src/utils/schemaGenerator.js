@@ -82,7 +82,7 @@ export function generateOrganizationSchema() {
     '@type': 'Person',
     name: 'Yug Patel',
     url: 'https://yugpatel.dev',
-    title: 'Full Stack Developer & UI Designer',
+    title: 'Full Stack Developer',
     image: 'https://yugpatel.dev/og-image.jpg',
     sameAs: [
       'https://linkedin.com/in/yugpatel',

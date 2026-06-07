@@ -9,8 +9,8 @@ const LinkedinIcon = (props) => <svg aria-hidden="true" focusable="false" xmlns=
 const ArrowUpRightIcon = (props) => <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>;
 
 const contactLinks = [
-  { icon: MailIcon, label: 'Email', value: siteConfig.email, href: `mailto:${siteConfig.email}`, type: 'email' },
-  { icon: LinkedinIcon, label: 'LinkedIn', value: 'Yug Patel', href: 'https://linkedin.com/in/yug-patel-b58944300', type: 'link' },
+  { icon: MailIcon, label: 'Email', value: siteConfig.email, href: null, type: 'text' },
+  { icon: LinkedinIcon, label: 'LinkedIn', value: 'Yug Patel', href: 'https://www.linkedin.com/in/yugpatel0274/', type: 'link' },
   { icon: GithubIcon, label: 'GitHub', value: '@YugPatel27', href: 'https://github.com/YugPatel27', type: 'link' },
 ];
 
@@ -27,16 +27,33 @@ export default function ContactSection() {
           Pick whichever channel suits you
         </p>
       </Reveal>
-      
+
+      {/* Contact Description */}
+      <Reveal delay={0.25} y={20}>
+        <div className="mx-auto max-w-2xl mb-16 sm:mb-20 md:mb-24">
+          <p className="text-center text-gray-600 leading-relaxed mb-4">
+            I'm always interested in hearing about new projects and opportunities. Whether you have a question or just want to say hello, feel free to reach out. I'll do my best to respond quickly.
+          </p>
+          <p className="text-center text-gray-600 leading-relaxed">
+            You can contact me directly via email, connect with me on LinkedIn, or check out my work on GitHub. I'm open to collaboration, freelance projects, and interesting opportunities in web development and UI design.
+          </p>
+        </div>
+      </Reveal>
+
+      {/* Contact Links Grid */}
       <div className="mx-auto max-w-4xl grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 md:gap-8">
         {contactLinks.map((link, index) => {
           const Icon = link.icon;
-          const isExternal = link.href.startsWith('http');
+          const isExternal = link.href?.startsWith('http');
           const num = (index + 1).toString().padStart(2, '0');
-          
+          const Wrapper = link.href ? 'a' : 'div';
+          const wrapperProps = link.href
+            ? { href: link.href, target: isExternal ? '_blank' : undefined, rel: isExternal ? 'noopener noreferrer' : undefined }
+            : {};
+
           return (
             <Reveal key={link.label} delay={index * 0.1} y={30}>
-              <a href={link.href} target={isExternal ? '_blank' : undefined} rel={isExternal ? 'noopener noreferrer' : undefined} className="group relative flex h-full flex-col justify-between gap-6 sm:gap-8 rounded-[24px] sm:rounded-[28px] border-2 border-white/10 bg-[#0C0C0C] p-6 sm:p-8 transition-all duration-300 hover:border-white/20 hover:bg-[#11121a] hover:shadow-[0_10px_30px_rgba(0,0,0,0.25)] hover:-translate-y-1">
+              <Wrapper {...wrapperProps} className="group relative flex h-full flex-col justify-between gap-6 sm:gap-8 rounded-[24px] sm:rounded-[28px] border-2 border-white/10 bg-[#0C0C0C] p-6 sm:p-8 transition-all duration-300 hover:border-white/20 hover:bg-[#11121a] hover:shadow-[0_10px_30px_rgba(0,0,0,0.25)] hover:-translate-y-1">
                 <div>
                   <div className="font-black text-white/70 mb-4 leading-none" style={{ fontSize: 'clamp(2.5rem, 5vw, 50px)' }}>
                     {num}
@@ -45,10 +62,10 @@ export default function ContactSection() {
                     <div className="rounded-full border border-white/20 p-3 sm:p-3.5 transition-colors duration-300 group-hover:border-white/30">
                       <Icon className="text-white" size={22} strokeWidth={1.5} />
                     </div>
-                    <ArrowUpRightIcon className="text-white/60 transition-all duration-300 group-hover:text-white group-hover:rotate-12" size={22} strokeWidth={1.5} />
+                    {link.href && <ArrowUpRightIcon className="text-white/60 transition-all duration-300 group-hover:text-white group-hover:rotate-12" size={22} strokeWidth={1.5} />}
                   </div>
                 </div>
-                
+
                 <div className="flex flex-col gap-2 sm:gap-3">
                   <span className="font-light uppercase tracking-widest text-white/50" style={{ fontSize: 'clamp(0.7rem, 1.1vw, 0.9rem)' }}>
                     {link.label}
@@ -57,7 +74,7 @@ export default function ContactSection() {
                     {link.value}
                   </span>
                 </div>
-              </a>
+              </Wrapper>
             </Reveal>
           );
         })}

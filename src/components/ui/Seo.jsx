@@ -3,7 +3,7 @@ import { createSectionMetaDescription, injectSchema } from '@/utils/schemaGenera
 
 const defaults = {
   title: 'Yug Patel',
-  description: 'Premium portfolio of Yug Patel - Full Stack Developer & UI Designer. Building scalable applications with React, Node.js, Django.',
+  description: 'Premium portfolio of Yug Patel - Full Stack Developer. Building scalable applications with React, Node.js, Django.',
 };
 
 /**

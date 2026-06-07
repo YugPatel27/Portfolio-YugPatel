@@ -25,7 +25,7 @@ const ProjectScrollCard = ({ project, index, total }) => {
   const cardRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: cardRef,
-    offset: ['start end', 'start start'],
+    offset: ['start end', 'end start'],
   });
 
   const targetScale = 1 - (total - 1 - index) * 0.03;
@@ -33,10 +33,10 @@ const ProjectScrollCard = ({ project, index, total }) => {
   const num = (index + 1).toString().padStart(2, '0');
 
   return (
-    <div ref={cardRef} className="relative md:sticky top-auto md:top-20 h-auto min-h-[auto] md:min-h-[640px] w-full max-w-5xl mx-auto">
+    <div ref={cardRef} className="relative md:sticky top-auto md:top-20 h-auto md:min-h-[640px] w-full max-w-5xl mx-auto mb-10 md:mb-0">
       <motion.article
         style={{ scale }}
-        className="origin-top mx-auto h-full w-full flex flex-col gap-5 md:gap-6 rounded-[24px] border border-[#D7E2EA]/25 bg-[#0C0C0C]/80 backdrop-blur-sm p-5 sm:p-8 shadow-[0_8px_32px_rgba(0,0,0,0.4)] overflow-visible"
+        className="origin-top mx-auto w-full h-auto md:h-full flex flex-col gap-5 md:gap-6 rounded-[24px] border border-[#D7E2EA]/25 bg-[#0C0C0C]/80 backdrop-blur-sm p-5 sm:p-8 shadow-[0_8px_32px_rgba(0,0,0,0.4)] overflow-visible"
       >
         <div className="flex flex-row flex-wrap items-center justify-between gap-4 border-b border-[#D7E2EA]/10 pb-4">
           <div className="flex flex-row items-center gap-4 sm:gap-6 min-w-0">
@@ -253,9 +253,6 @@ export default function ProjectsSection() {
         <div className="mb-24 md:mb-40">
           <Reveal y={40}>
             <div className="mb-16 md:mb-20">
-              <div className="inline-flex rounded-full border border-sky-500/40 bg-sky-500/5 px-6 py-2.5">
-                <span className="text-xs font-bold uppercase tracking-widest text-sky-400">Featured</span>
-              </div>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase text-white mt-6 leading-tight tracking-tight">
                 Standout Projects
               </h2>
@@ -277,9 +274,6 @@ export default function ProjectsSection() {
         <div>
           <Reveal y={40}>
             <div className="mb-16 md:mb-20">
-              <div className="inline-flex rounded-full border border-[#D7E2EA]/40 bg-[#D7E2EA]/5 px-6 py-2.5">
-                <span className="text-xs font-bold uppercase tracking-widest text-[#D7E2EA]/80">Explore</span>
-              </div>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase text-white mt-6 leading-tight tracking-tight">
                 More Projects
               </h2>

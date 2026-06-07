@@ -10,7 +10,7 @@ export default function AboutSection() {
   const paragraph3 = "I'm passionate about building products that matter. My approach combines technical excellence with user-centered design, ensuring every project is both powerful and intuitive. Whether shipping e-commerce platforms, healthcare systems, or IoT solutions, I focus on clean architecture and meaningful results. I believe great code starts with great communication.";
   
   return (
-    <section id="about" className="relative flex min-h-screen w-full items-center justify-center overflow-hidden px-5 sm:px-8 md:px-10 py-20 bg-white rounded-[40px] sm:rounded-[50px] md:rounded-[60px] border border-gray-200/30">
+    <section id="about" className="relative flex min-h-screen w-full items-center justify-center overflow-hidden px-5 sm:px-8 md:px-10 py-20 bg-white rounded-[40px] sm:rounded-[50px] md:rounded-[60px] border border-gray-200/30 scroll-mt-28">
       <div className="relative z-10 flex flex-col items-center gap-10 sm:gap-14 md:gap-16 text-center w-full">
         <Reveal delay={0} y={40}>
           <h2 className="hero-heading font-black uppercase leading-none tracking-tight" style={{ fontSize: 'clamp(2.5rem, 10vw, 120px)' }}>
