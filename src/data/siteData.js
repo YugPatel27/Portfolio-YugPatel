@@ -8,7 +8,7 @@ export const siteConfig = {
   availability: 'Open to freelance and internship opportunities',
   phone: '+91 8980606446',
   email: 'yugpatel0274@gmail.com',
-  resumeUrl: '/resume.pdf',
+  resumeUrl: '/Resume-Yug Patel.pdf',
   hostUrl: '/',
   education: {
     college: 'Indus University',

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { FiDownload } from 'react-icons/fi';
-import { navLinks } from '@/data/siteData';
+import { navLinks, siteConfig } from '@/data/siteData';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -24,12 +24,9 @@ export default function Navbar() {
   }, []);
 
   const handleResumeClick = () => {
-    const link = document.createElement('a');
-    link.href = '/resume.pdf';
-    link.download = 'Yug-Patel-Resume.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    // Open the resume PDF in a new tab (make sure the file exists in `public/`)
+    const resumePath = siteConfig?.resumeUrl || '/resume.pdf';
+    window.open(encodeURI(resumePath), '_blank', 'noopener,noreferrer');
   };
 
   return (
