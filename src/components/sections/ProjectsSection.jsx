@@ -31,6 +31,15 @@ const ProjectScrollCard = ({ project, index, total }) => {
   const targetScale = 1 - (total - 1 - index) * 0.03;
   const scale = useTransform(scrollYProgress, [0, 1], [1, targetScale]);
   const num = (index + 1).toString().padStart(2, '0');
+  const ImageWrapper = project.repoUrl ? motion.a : motion.div;
+  const imageWrapperProps = project.repoUrl
+    ? {
+        href: project.repoUrl,
+        target: '_blank',
+        rel: 'noopener noreferrer',
+        'aria-label': `Explore ${project.title} repository`,
+      }
+    : {};
 
   return (
     <div ref={cardRef} className="relative md:sticky top-auto md:top-20 h-auto md:min-h-[640px] w-full max-w-5xl mx-auto mb-10 md:mb-0">
@@ -63,6 +72,19 @@ const ProjectScrollCard = ({ project, index, total }) => {
             >
               <span className="hidden sm:inline">Live</span>
               <FaArrowUpRightFromSquare aria-hidden="true" focusable="false" />
+            </motion.a>
+          )}
+
+          {project.repoUrl && (
+            <motion.a
+              href={project.repoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05 }}
+              className="shrink-0 inline-flex items-center gap-2 rounded-full bg-white/5 border border-white/15 hover:bg-white/10 hover:border-white/25 px-4 py-2 text-xs font-bold uppercase tracking-widest text-white/80 transition-colors"
+            >
+              <span className="hidden sm:inline">Explore</span>
+              Repo
             </motion.a>
           )}
 
@@ -141,7 +163,8 @@ const ProjectScrollCard = ({ project, index, total }) => {
             </div>
           </div>
 
-          <motion.div
+          <ImageWrapper
+            {...imageWrapperProps}
             whileHover={{ scale: 1.02 }}
             transition={{ duration: 0.4 }}
             className="overflow-hidden rounded-xl h-[300px] sm:h-[360px] md:h-full min-h-[280px] relative group border border-[#D7E2EA]/15 block"
@@ -161,10 +184,10 @@ const ProjectScrollCard = ({ project, index, total }) => {
                 {project.title}
               </span>
               <span className="text-sky-300/80 text-xs font-semibold uppercase tracking-widest mt-2">
-                Explore Project
+                {project.repoUrl ? 'Explore Project' : 'Preview Project'}
               </span>
             </div>
-          </motion.div>
+          </ImageWrapper>
         </div>
       </motion.article>
     </div>
