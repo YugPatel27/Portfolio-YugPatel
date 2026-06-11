@@ -31,13 +31,14 @@ const ProjectScrollCard = ({ project, index, total }) => {
   const targetScale = 1 - (total - 1 - index) * 0.03;
   const scale = useTransform(scrollYProgress, [0, 1], [1, targetScale]);
   const num = (index + 1).toString().padStart(2, '0');
-  const ImageWrapper = project.repoUrl ? motion.a : motion.div;
-  const imageWrapperProps = project.repoUrl
+  const previewUrl = project.liveUrl ?? project.demoUrl ?? project.repoUrl;
+  const ImageWrapper = previewUrl ? motion.a : motion.div;
+  const imageWrapperProps = previewUrl
     ? {
-        href: project.repoUrl,
-        target: '_blank',
-        rel: 'noopener noreferrer',
-        'aria-label': `Explore ${project.title} repository`,
+        href: previewUrl,
+        target: previewUrl.startsWith('http') ? '_blank' : undefined,
+        rel: previewUrl.startsWith('http') ? 'noopener noreferrer' : undefined,
+        'aria-label': `Preview ${project.title}`,
       }
     : {};
 
@@ -184,7 +185,7 @@ const ProjectScrollCard = ({ project, index, total }) => {
                 {project.title}
               </span>
               <span className="text-sky-300/80 text-xs font-semibold uppercase tracking-widest mt-2">
-                {project.repoUrl ? 'Explore Project' : 'Preview Project'}
+                {previewUrl ? 'Preview Project' : 'Preview Project'}
               </span>
             </div>
           </ImageWrapper>

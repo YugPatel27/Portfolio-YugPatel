@@ -426,6 +426,8 @@ export const projects = [
       { label: 'Focus', value: 'Diamond trading' },
       { label: 'Stack', value: 'MERN' },
     ],
+    liveUrl: 'https://diamondjewellery-woad.vercel.app/',
+    demoUrl: 'https://diamondjewellery-woad.vercel.app/',
     image: '/Diamond%20E-Commerce%20Platform.png',
     gallery: ['product catalog', 'auth flow', 'seller dashboard'],
     accent: 'linear-gradient(135deg, rgba(183,168,108,0.32), rgba(102,90,48,0.18))',

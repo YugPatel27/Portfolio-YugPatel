@@ -57,9 +57,14 @@ export const ProjectCard = React.forwardRef(function ProjectCard({ project, onOp
           <button type="button" className="text-link" onClick={() => onOpen(project)}>
             Details
           </button>
-          <a href={project.demoUrl ?? '#projects'} className="text-link">
-            Live Demo
-          </a>
+          <a
+          href={project.demoUrl ?? '#projects'}
+          className="text-link"
+          target={project.demoUrl?.startsWith('http') ? '_blank' : undefined}
+          rel={project.demoUrl?.startsWith('http') ? 'noopener noreferrer' : undefined}
+        >
+          Live Demo
+        </a>
         </div>
       </div>
     </motion.article>
